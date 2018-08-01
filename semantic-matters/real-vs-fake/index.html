@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Real Elements VS Fakes</title>
+  <style>
+    .button {
+      background-color: indianred;
+      color: white;
+      display: inline-block;
+      font-size: 1.2rem;
+      padding: 0.5rem 1rem;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Login</h1>
+    <p>
+      Try to submit this form using the mouse click with both buttons,
+      next using tab put the focus to the buttons and use space bar key,
+      next put the focus again and use enter key
+    </p>
+    <form id="login-form" >
+      <div>
+        <label for="user">Username</label>
+        <input type="text" id="user" name="user">
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password">
+      </div>
+      <button class="button">Login</button>
+      <div id="button-fake" class="button" tabindex="0">Login Fake</div>
+    </form>
+  </main>
+  <script defer>
+    const buttonFake = document.getElementById('button-fake')
+    const loginForm = document.getElementById('login-form')
+    buttonFake.addEventListener('click', function (event) {
+      event.preventDefault()
+      event.stopPropagation()
+      loginForm.submit()
+    })
+  </script>
+</body>
+</html>
